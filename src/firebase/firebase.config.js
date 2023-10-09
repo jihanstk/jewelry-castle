@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCLDs17n8VD5hQUKeB4UKfTA2Ee1WSK1kw",
-  authDomain: "jewelary-castle.firebaseapp.com",
-  projectId: "jewelary-castle",
-  storageBucket: "jewelary-castle.appspot.com",
-  messagingSenderId: "616714628538",
-  appId: "1:616714628538:web:3d4a510b70a3da66954183",
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase

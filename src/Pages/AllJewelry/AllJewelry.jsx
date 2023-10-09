@@ -1,15 +1,18 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Loading from "../../common/Loading/Loading";
 // import { useEffect } from "react";
 
 const AllJewelry = () => {
   const [allJewelry, setAllJewelry] = useState([]);
-  axios.get("http://localhost:5021/all-jewelry").then((res) => {
-    console.log(res);
-    setAllJewelry(res.data);
-  });
+  useEffect(() => {
+    axios.get("http://localhost:5021/all-jewelry").then((res) => {
+      console.log(res);
+      setAllJewelry(res.data);
+    });
+  }, []);
+
   if (allJewelry.length == 0) {
     return <Loading></Loading>;
   }
