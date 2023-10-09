@@ -6,6 +6,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 // import useAuth from "../../Hooks/useAuth/useAuth";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import SocialLogin from "../../common/SocialLogin/SocialLogin";
 // import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 // import { Link, useNavigate } from "react-router-dom";
@@ -144,9 +145,9 @@ const Register = () => {
             </div>
             <p className="text-red-600">{err}</p>
           </form>
-          {/* <div>
+          <div>
             <SocialLogin></SocialLogin>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
