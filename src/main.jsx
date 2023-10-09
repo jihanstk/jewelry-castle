@@ -6,6 +6,9 @@ import Home from "./Pages/Home/Home/Home";
 import MainLayout from "./MainLayout/MainLayout";
 import Register from "./Pages/Register/Register";
 import AuthProvider from "./AuthProvider/AuthProvider";
+import Login from "./Pages/Login/Login";
+import AddJewelry from "./Pages/AddJewelry/AddJewelry";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -16,8 +19,16 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: "/add-jewelry",
+        element: <AddJewelry></AddJewelry>,
+      },
+      {
         path: "register",
         element: <Register></Register>,
+      },
+      {
+        path: "login",
+        element: <Login></Login>,
       },
     ],
   },

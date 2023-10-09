@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import { AiOutlineClose, AiOutlineMenuUnfold } from "react-icons/ai";
 import { useState } from "react";
@@ -36,7 +36,10 @@ const NavBar = () => {
     <div className={` px-10 md:py-5 py-2 bg-white`} id="main-nav">
       <nav className="flex justify-between items-center">
         <div className="jihan">
-          <h1 className="md:text-4xl text-xl font-bold">JewelryCastle</h1>
+          <Link to="/">
+            {" "}
+            <h1 className="md:text-4xl text-xl font-bold">JewelryCastle</h1>
+          </Link>
         </div>
         <ul
           className={` md:static absolute  bg-white md:p-0 p-10 md:w-auto text-center w-full   md:flex nav-box duration-300 ${
@@ -47,11 +50,16 @@ const NavBar = () => {
             return (
               <li
                 key={i}
-                className="mr-4 md:hover:text-[#0b9795] hover:text-black navBar-list md:mt-0 mt-10"
+                className="mr-4 md:hover:text-[#0b9795] hover:text-black navBar-list md:mt-0 mt-10 font-bold duration-300 "
               >
-                <a href={`${item.id}`} className="text-xl ">
+                <NavLink
+                  to={item.path}
+                  className={({ isActive }) =>
+                    isActive ? "text-[#0b9795] font-bold" : ""
+                  }
+                >
                   {item.name}
-                </a>
+                </NavLink>
               </li>
             );
           })}
