@@ -1,29 +1,25 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Loading from "../../../common/Loading/Loading";
 
-import Loading from "../../common/Loading/Loading";
-import useAuth from "../../Hooks/useAuth/useAuth";
-// import { useEffect } from "react";
-
-const MyJewelry = () => {
-  const [myJewelry, setMyJewelry] = useState([]);
-  const { user } = useAuth();
+const Popular = () => {
+  const [allJewelry, setAllJewelry] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:5021/jewelry/${user.email}`).then((res) => {
+    axios.get("http://localhost:5021/all-jewelry").then((res) => {
       console.log(res);
-      setMyJewelry(res.data);
+      setAllJewelry(res.data);
     });
-  }, [user]);
+  }, []);
 
-  if (myJewelry.length == 0) {
+  if (allJewelry.length == 0) {
     return <Loading></Loading>;
   }
 
   return (
     <div>
-      <h1 className="text-center text-3xl font-bold">My Jewelry</h1>
+      <h1 className="text-center text-3xl font-bold">Popular Items</h1>
       <div className="grid md:grid-cols-3 grid-cols-1 w-10/12 mx-auto">
-        {myJewelry.map((item, i) => {
+        {allJewelry.slice(0, 3).map((item, i) => {
           return (
             <div key={i} className="card w-96 bg-base-100 shadow-xl">
               <figure>
@@ -44,4 +40,4 @@ const MyJewelry = () => {
   );
 };
 
-export default MyJewelry;
+export default Popular;

@@ -9,6 +9,7 @@ import AuthProvider from "./AuthProvider/AuthProvider";
 import Login from "./Pages/Login/Login";
 import AddJewelry from "./Pages/AddJewelry/AddJewelry";
 import AllJewelry from "./Pages/AllJewelry/AllJewelry";
+import MyJewelry from "./Pages/MyJewelry/MyJewelry";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/all-jewelry",
         element: <AllJewelry></AllJewelry>,
+      },
+      {
+        path: "/my-jewelry",
+        element: <MyJewelry></MyJewelry>,
       },
       {
         path: "register",
