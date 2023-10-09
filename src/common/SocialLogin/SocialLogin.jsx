@@ -1,5 +1,6 @@
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../Hooks/useAuth/useAuth";
+import axios from "axios";
 // import axios from "axios";
 // import { useLocation, useNavigate } from "react-router-dom";
 
@@ -10,16 +11,16 @@ const SocialLogin = () => {
   // const from = location.state.
   const handleGoogleLogin = () => {
     googleLogin().then((result) => {
-      // axios
-      //   .post("http://localhost:5021/users", {
-      //     email: result.user.email,
-      //     name: result.user.displayName,
-      //     photo: result.user.photoURL,
-      //     role: "user",
-      //   })
-      //   .then((res) => {
-      //     console.log(res);
-      //   });
+      axios
+        .post("http://localhost:5021/users", {
+          email: result.user.email,
+          name: result.user.displayName,
+          photo: result.user.photoURL,
+          role: "user",
+        })
+        .then((res) => {
+          console.log(res);
+        });
       console.log(result);
     });
   };

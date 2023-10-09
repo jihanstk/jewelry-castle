@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
+
+import Loading from "../../common/Loading/Loading";
 // import { useEffect } from "react";
 
 const AllJewelry = () => {
@@ -8,6 +10,9 @@ const AllJewelry = () => {
     console.log(res);
     setAllJewelry(res.data);
   });
+  if (allJewelry.length == 0) {
+    return <Loading></Loading>;
+  }
 
   return (
     <div>

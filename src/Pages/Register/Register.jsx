@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form";
 // import useAuth from "../../Hooks/useAuth/useAuth";
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import useAuth from "../../Hooks/useAuth/useAuth";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import SocialLogin from "../../common/SocialLogin/SocialLogin";
+import axios from "axios";
+import Swal from "sweetalert2";
 // import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 // import { Link, useNavigate } from "react-router-dom";
@@ -15,8 +17,9 @@ import SocialLogin from "../../common/SocialLogin/SocialLogin";
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
   const [err, setErr] = useState("");
-  // const navigate = useNavigate();
-  const { registerProfile, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { registerProfile, updateUserProfile, logOut } =
+    useContext(AuthContext);
 
   // console.log(user);
   // const { registerProfile, updateUserProfile, logOut } = useAuth();
@@ -35,28 +38,28 @@ const Register = () => {
       console.log(user);
       // TODO : Update User Profile Name and photo
       updateUserProfile(user, data.name, data.photo).then(() => {
-        console.log("User Profile is updated");
-        // const userInfo = {
-        //   email: user.email,
-        //   name: user.displayName,
+        // console.log("User Profile is updated");
+        const userInfo = {
+          email: user.email,
+          name: user.displayName,
+          photo: data.photo,
+          role: "user",
+        };
 
-        //   role: "user",
-        // };
-
-        // axios
-        //   .post("http://localhost:5021/users", userInfo)
-        //   .then((userUpdate) => {
-        //     console.log("from register Add", userUpdate);
-        //     Swal.fire({
-        //       position: "top-end",
-        //       icon: "success",
-        //       title: "Your work has been saved",
-        //       showConfirmButton: false,
-        //       timer: 1500,
-        //     });
-        //     logOut();
-        //     navigate("/login");
-        //   });
+        axios
+          .post("http://localhost:5021/users", userInfo)
+          .then((userUpdate) => {
+            console.log("from register Add", userUpdate);
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Your work has been saved",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            logOut();
+            navigate("/login");
+          });
       });
     });
 
