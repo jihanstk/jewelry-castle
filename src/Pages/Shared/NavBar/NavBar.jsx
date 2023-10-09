@@ -9,6 +9,7 @@ const NavBar = () => {
   const handleLogOut = () => {
     logOut();
   };
+  const badge = localStorage.getItem("addToCart");
   const navLists = [
     {
       name: "home",
@@ -63,6 +64,13 @@ const NavBar = () => {
               </li>
             );
           })}
+          {user.role == "user" ? (
+            <li className="mr-4 md:hover:text-[#0b9795] hover:text-black navBar-list md:mt-0 mt-10 font-bold duration-300">
+              Cart <span className="badge-info">{badge.length}</span>
+            </li>
+          ) : (
+            ""
+          )}
         </ul>
         <div className="font-bold z-20 duration-200 md:hidden inline-block p-6">
           {open ? (

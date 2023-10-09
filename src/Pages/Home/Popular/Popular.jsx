@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Loading from "../../../common/Loading/Loading";
+import AddToCartBTN from "../../../common/AddToCartBTN/AddToCartBTN";
 
 const Popular = () => {
   const [allJewelry, setAllJewelry] = useState([]);
@@ -29,7 +30,10 @@ const Popular = () => {
                 <h2 className="card-title">{item.jewelryName}</h2>
                 <p>{item.description}</p>
                 <div className="card-actions justify-center">
-                  <button className="btn btn-primary">Add to cart</button>
+                  <AddToCartBTN
+                    JID={item._id}
+                    JName={item.jewelryName}
+                  ></AddToCartBTN>
                 </div>
               </div>
             </div>

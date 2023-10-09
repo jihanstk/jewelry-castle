@@ -32,9 +32,6 @@ const MyJewelry = () => {
               <div className="card-body">
                 <h2 className="card-title">{item.jewelryName}</h2>
                 <p>{item.description}</p>
-                <div className="card-actions justify-center">
-                  <button className="btn btn-primary">Add to cart</button>
-                </div>
               </div>
             </div>
           );
