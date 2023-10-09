@@ -23,7 +23,7 @@ const Banner = () => {
     observer.observe(banner);
   }, []);
   return (
-    <div className="flex" id="banner-inter">
+    <div className="md:flex" id="banner-inter">
       <div className="w-full ">
         <img
           src="https://i.ibb.co/Jjynj9y/pexels-ari-roberts-9637586.png"
@@ -31,7 +31,7 @@ const Banner = () => {
           className="w-full "
         />
       </div>
-      <div className="w-full bg-[#d1f2fd] flex flex-col justify-center align-middle ">
+      <div className="w-full bg-[#d1f2fd] flex flex-col justify-center align-middle py-10">
         <div className="mx-auto text-center">
           <p className="text-xl text-[#246183] font-semibold uppercase">
             personalize jewelry
