@@ -10,6 +10,8 @@ import Login from "./Pages/Login/Login";
 import AddJewelry from "./Pages/AddJewelry/AddJewelry";
 import AllJewelry from "./Pages/AllJewelry/AllJewelry";
 import MyJewelry from "./Pages/MyJewelry/MyJewelry";
+import DashboardLayout from "./MainLayout/DashboardLayout";
+import Product from "./Pages/Dashboard/Product/Product";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +41,16 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login></Login>,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        path: "product",
+        element: <Product></Product>,
       },
     ],
   },

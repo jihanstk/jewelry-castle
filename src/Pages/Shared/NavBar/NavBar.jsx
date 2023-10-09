@@ -3,13 +3,18 @@ import { Link, NavLink } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenuUnfold } from "react-icons/ai";
 import { useState } from "react";
 import useAuth from "../../../Hooks/useAuth/useAuth";
+import useAdmin from "../../../Hooks/useAdmin/useAdmin";
 const NavBar = () => {
   const { user, logOut } = useAuth();
+  const [isAdmin] = useAdmin();
   console.log(user);
   const handleLogOut = () => {
     logOut();
   };
-  const badge = localStorage.getItem("addToCart");
+  const badgeObj = localStorage.getItem("addToCart");
+  const badge = badgeObj ? JSON.parse(badgeObj) : 0;
+  console.log(badgeObj);
+
   const navLists = [
     {
       name: "home",
@@ -64,9 +69,12 @@ const NavBar = () => {
               </li>
             );
           })}
-          {user.role == "user" ? (
+          {isAdmin.role == "user" ? (
             <li className="mr-4 md:hover:text-[#0b9795] hover:text-black navBar-list md:mt-0 mt-10 font-bold duration-300">
-              Cart <span className="badge-info">{badge.length}</span>
+              <Link to="dashboard/product">
+                Cart{" "}
+                <span className="badge-info">{Object.keys(badge).length}</span>
+              </Link>
             </li>
           ) : (
             ""
