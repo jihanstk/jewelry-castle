@@ -16,7 +16,7 @@ const NavBar = () => {
     },
     {
       name: "All jewelry",
-      path: "/product",
+      path: "/all-jewelry",
     },
     {
       name: "My Jewelry",
